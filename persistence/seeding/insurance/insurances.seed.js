@@ -1,4 +1,4 @@
-const Insurance = require('../../domain/insurance/insurance.model');
+const Insurance = require('../../../domain/insurance/insurance.model');
 
 seed = () => {
   console.log('Seeding Insurance');

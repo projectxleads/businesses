@@ -7,9 +7,11 @@ const insuranceSchema = new Schema({
     type: String,
     required: true
   },
-  businesses: [{
-    businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true } 
-  }]
+  businesses: {
+    type: [{
+      businessId: { type: Schema.Types.ObjectId, ref: 'InsuranceBusinessEntity', required: true }
+    }]
+  }
 });
 
 module.exports = mongoose.model('Insurance', insuranceSchema);

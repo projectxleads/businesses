@@ -2,8 +2,8 @@ const InsuranceBusiness = require('../../domain/insurance/entities/insurance-bus
 
 seed = () => {
   console.log('Seeding Insurance Business');
-  return InsuranceBusiness.findOne(business => {
-    if (!business){
+  return InsuranceBusiness.findOne().then(business => {
+    if (!business) {
       business = new InsuranceBusiness({
         name: "Outsurance"
       }); 
@@ -11,7 +11,7 @@ seed = () => {
     }
   })
   .then(() => console.log('\t- Insurance Business seed succeeded'))
-  .catch(err => console.log('Insurance Business seed failed:', err));
+  .catch(err => console.log('\- Insurance Business seed failed:', err));
 }
 
 module.exports = seed;

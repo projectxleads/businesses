@@ -1,5 +1,5 @@
-const insuranceSeed = require('./insurances.seed');
-const businessSeed = require('./business.seed');
+const insuranceSeed = require('./insurance/insurances.seed');
+const businessSeed = require('./business/business.seed');
 
 seed = () => {
   // Just Keep in mind of relations. Then order of seeding will matter
