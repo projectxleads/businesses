@@ -17,11 +17,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const businessSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   businessTypes: {
     type: [{
-      businessTypeId: { type: mongoose.Types.ObjectId, require: true, ref: 'BusinessTypeEntity' },    //dropDubs: Ensure dropping duplicate records in your schemas
+      businessTypeId: { type: Schema.Types.ObjectId, require: true, ref: 'BusinessTypeEntity' },    //dropDubs: Ensure dropping duplicate records in your schemas
       description: String
     }]
   }

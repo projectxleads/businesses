@@ -4,10 +4,17 @@ seed = () => {
   console.log('Seeding Insurance');
   return Insurance.findOne().then(insurance => {
     if (!insurance) {
-      const insurance = new Insurance({
-        name: 'Car'
-      });
-      return insurance.save();   // this does return a promise I think without having to call return
+      return Insurance.insertMany([
+        { name: 'Car', description: 'Car Insurance companies' },
+        { name: 'Home', description: 'Home Insurance companies' },
+        { name: 'Business', description: 'Business Insurance companies' },
+        { name: 'Life', description: 'Life Insurance companies' },
+        { name: 'Funeral', description: 'Funeral Insurance companies' },
+        { name: 'Hospital Plan', description: 'Hospital Plan Insurance companies' },
+        { name: 'Medical Aid', description: 'Medical Aid Insurance companies' },
+        { name: 'Motor Warranty', description: 'Motor Warranty Insurance companies' },
+        { name: 'Travel', description: 'Travel Insurance companies' }
+      ])
     }
   }).then(result => {
     console.log('\t- Insurance seed succeeded');
