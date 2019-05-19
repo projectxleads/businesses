@@ -13,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello World'));
 
-mongoose.connect('mongodb+srv://michaelh:Jordan01@cluster0-kdwgq.mongodb.net/insurance?retryWrites=true')
+// mongoose.connect('mongodb+srv://michaelh:Jordan01@cluster0-kdwgq.mongodb.net/insurance?retryWrites=true')
+mongoose.connect('mongodb://localhost/insurance')
   .then(result => {
     console.log('Connected to DB!')
     seedData().then(() => {
