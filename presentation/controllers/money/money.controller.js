@@ -10,7 +10,7 @@ exports.getMoney = (req, res, next) => {
 }
 
 exports.addMoney = (req, res, next) => {
-  res.status(201).send("Added money");
+  res.location(req.url).status(201).send("Added money");
 }
 
 exports.updateMoney = (req, res, next) => {
