@@ -1,16 +1,35 @@
 
+const moneyLogic = require('../../../application/logic/money/money.logic')
 
 exports.getMonies = (req, res, next) => {
   console.log('getMonies: ');
-  res.send("GET Monies")
+  moneyLogic.getMonies()
+    .then(monies => {
+      // TODO: Map models
+      res.send(monies)
+    })
+    .catch(err => console.log(err));
 }
 
 exports.getMoney = (req, res, next) => {
-  res.send("GET Money")
+  moneyLogic.getMoney(req.params.id)
+    .then(money => {
+      // TODO: Map model
+      res.send(money);
+    })
+    .catch(err => console.log(err));
 }
 
 exports.addMoney = (req, res, next) => {
-  res.location(req.url).status(201).send("Added money");
+  moneyLogic.addMoney(req.body)
+    .then(money => {
+      // TODO: Map model
+      res.location(req.url).status(201).send(money);
+    })
+    .catch(err => { 
+      console.log(err)
+      res.status(500).send();
+    });
 }
 
 exports.updateMoney = (req, res, next) => {
