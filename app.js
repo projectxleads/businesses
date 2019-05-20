@@ -5,15 +5,16 @@ const mongoose = require('mongoose');
 
 // Require Files
 const seedData = require('./persistence/seeding/seed-data');
+const routeMiddleware = require('./presentation/middleware/routes.middleware');
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
+routeMiddleware(app);
 
 app.get('/', (req, res) => res.send('Hello World'));
 
-// mongoose.connect('mongodb+srv://michaelh:Jordan01@cluster0-kdwgq.mongodb.net/insurance?retryWrites=true')
 mongoose.connect('mongodb://localhost/insurance')
   .then(result => {
     console.log('Connected to DB!')
