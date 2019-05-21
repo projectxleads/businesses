@@ -9,6 +9,6 @@ router.get(uri, moneyController.getMonies);
 router.get(`${uri}/:id`, moneyController.getMoney);
 router.post(uri, moneyController.addMoney);
 router.put(`${uri}/:id`, moneyController.updateMoney);
-router.delete(uri, moneyController.deleteMoney);
+router.delete(`${uri}/:id`, moneyController.deleteMoney);
 
 module.exports = router;

@@ -1,26 +1,41 @@
 const Money = require('../../../domain/money/money.model');
 
 exports.getMonies = () => {
-  return Money.find();
+  console.log("Get Monies:");
+  return Money.find().then(money => {
+    console.log('\t- Successfully got monies');
+    return money;
+  });
 }
 
 exports.getMoney = (id) => {
-  return Money.findById(id);
+  console.log('Get Money:');
+  return Money.findById(id).then(money => {
+    console.log('\t- Successfully got money');
+    return money;
+  })
+  .catch(err => console.log(err));
 }
 
 exports.addMoney = reqBody => {
+  console.log("Adding Money: ")
   const money = new Money({
     name: reqBody.name,
     description: reqBody.description,
     businesses: reqBody.businesses
   });
 
-  return money.save();
+  return money.save()
+    .then(money => {
+      console.log('\t- Successfully added money')
+      return money;
+    })
+    .catch(err => console.log(err));
 }
 
 exports.updateMoney = (id, reqBody) => {
   console.log('Updating Money: ')
-  Money.findById(id)
+  return Money.findById(id)
     .then(money => {
       if (!money)
         return;
@@ -29,12 +44,19 @@ exports.updateMoney = (id, reqBody) => {
       money.businesses = reqBody.businesses;
       return money.save();
     })
-    .then(result => {
+    .then(money => {
       console.log('\t- Successfully updated Money.');
+      return money;
     })
-    .catch(err => console.log('\t- Failed to update Money'));
+    .catch(err => console.log(err));
 }
 
-exports.delete = id => {
-  Money.findByIdAndRemove(id);
+exports.deleteMoney = (id) => {
+  console.log('Deleting Money: ');
+  return Money.findByIdAndDelete(id)
+    .then(deletedMoney => {
+      console.log('\t- Successfully deleted Money');
+      return deletedMoney;
+    })
+    .catch(err => console.log(err));
 }
