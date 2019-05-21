@@ -38,7 +38,7 @@ exports.updateMoney = (id, reqBody) => {
   return Money.findById(id)
     .then(money => {
       if (!money)
-        return;
+        return money;
       money.name = reqBody.name;
       money.description = reqBody.description;
       money.businesses = reqBody.businesses;
