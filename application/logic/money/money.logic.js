@@ -1,10 +1,14 @@
 const Money = require('../../../domain/money/money.model');
+const MoneyDto = require('../../models/dtos/money/money.dto');
 
 exports.getMonies = () => {
   console.log("Get Monies:");
-  return Money.find().then(money => {
+  return Money.find().then(monies => {
     console.log('\t- Successfully got monies');
-    return money;
+    const moniesDto = monies.map(money => {
+      return new MoneyDto(money);
+    });
+    return moniesDto;
   });
 }
 
@@ -12,7 +16,8 @@ exports.getMoney = (id) => {
   console.log('Get Money:');
   return Money.findById(id).then(money => {
     console.log('\t- Successfully got money');
-    return money;
+    const moneyDto = new MoneyDto(money);
+    return moneyDto;
   })
   .catch(err => console.log(err));
 }
@@ -27,8 +32,9 @@ exports.addMoney = reqBody => {
 
   return money.save()
     .then(money => {
-      console.log('\t- Successfully added money')
-      return money;
+      console.log('\t- Successfully added money');
+      const moneyDto = new MoneyDto(money);
+      return {money: moneyDto, id: money.id};
     })
     .catch(err => console.log(err));
 }
@@ -46,7 +52,8 @@ exports.updateMoney = (id, reqBody) => {
     })
     .then(money => {
       console.log('\t- Successfully updated Money.');
-      return money;
+      const moneyDto = new MoneyDto(money);
+      return moneyDto;
     })
     .catch(err => console.log(err));
 }
@@ -56,7 +63,8 @@ exports.deleteMoney = (id) => {
   return Money.findByIdAndDelete(id)
     .then(deletedMoney => {
       console.log('\t- Successfully deleted Money');
-      return deletedMoney;
+      const moneyDto = new MoneyDto(deletedMoney);
+      return moneyDto;
     })
     .catch(err => console.log(err));
 }

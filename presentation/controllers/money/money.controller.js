@@ -31,9 +31,8 @@ exports.getMoney = (req, res, next) => {
 
 exports.addMoney = (req, res, next) => {
   moneyLogic.addMoney(req.body)
-    .then(money => {
-      // TODO: Map model
-      res.location(`${req.url}/${money.id}`).status(201).send(money);
+    .then(data => {
+      res.location(`${req.url}/${data.id}`).status(201).send(data.money);
     })
     .catch(err => {
       res.status(500).send();
