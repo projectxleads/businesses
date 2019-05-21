@@ -1,8 +1,8 @@
 class Money {
   constructor(money) {
+    this.id = money.id;
     this.name = money.name;
     this.description = money.description;
-    this.businesses = money.businesses;
   }
 }
 

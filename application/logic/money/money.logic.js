@@ -18,8 +18,7 @@ exports.getMoney = (id) => {
     console.log('\t- Successfully got money');
     const moneyDto = new MoneyDto(money);
     return moneyDto;
-  })
-  .catch(err => console.log(err));
+  });
 }
 
 exports.addMoney = reqBody => {
@@ -35,8 +34,7 @@ exports.addMoney = reqBody => {
       console.log('\t- Successfully added money');
       const moneyDto = new MoneyDto(money);
       return {money: moneyDto, id: money.id};
-    })
-    .catch(err => console.log(err));
+    });
 }
 
 exports.updateMoney = (id, reqBody) => {
@@ -54,8 +52,7 @@ exports.updateMoney = (id, reqBody) => {
       console.log('\t- Successfully updated Money.');
       const moneyDto = new MoneyDto(money);
       return moneyDto;
-    })
-    .catch(err => console.log(err));
+    });
 }
 
 exports.deleteMoney = (id) => {
@@ -65,6 +62,5 @@ exports.deleteMoney = (id) => {
       console.log('\t- Successfully deleted Money');
       const moneyDto = new MoneyDto(deletedMoney);
       return moneyDto;
-    })
-    .catch(err => console.log(err));
+    });
 }
