@@ -63,7 +63,10 @@ exports.deleteMoney = (id) => {
   return Money.findByIdAndDelete(id)
     .then(deletedMoney => {
       console.log('\t- Successfully deleted Money');
-      const moneyDto = new MoneyDto(deletedMoney);
+      const moneyDto = null;
+      if (deletedMoney)
+        moneyDto = new MoneyDto(deletedMoney)
+      
       return moneyDto;
     })
     .catch(err => console.log(err));
