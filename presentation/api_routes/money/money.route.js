@@ -8,7 +8,7 @@ const uri = '/money';
 router.get(uri, moneyController.getMonies);
 router.get(`${uri}/:id`, moneyController.getMoney);
 router.post(uri, moneyController.addMoney);
-router.put(uri, moneyController.updateMoney);
+router.put(`${uri}/:id`, moneyController.updateMoney);
 router.delete(uri, moneyController.deleteMoney);
 
 module.exports = router;

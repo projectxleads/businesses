@@ -34,6 +34,7 @@ exports.addMoney = (req, res, next) => {
 
 exports.updateMoney = (req, res, next) => {
   res.send("Updated Money");
+  moneyLogic.updateMoney(req.params.id, req.body);
 }
 
 exports.deleteMoney = (req, res, next) => {

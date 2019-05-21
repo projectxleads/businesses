@@ -17,3 +17,24 @@ exports.addMoney = reqBody => {
 
   return money.save();
 }
+
+exports.updateMoney = (id, reqBody) => {
+  console.log('Updating Money: ')
+  Money.findById(id)
+    .then(money => {
+      if (!money)
+        return;
+      money.name = reqBody.name;
+      money.description = reqBody.description;
+      money.businesses = reqBody.businesses;
+      return money.save();
+    })
+    .then(result => {
+      console.log('\t- Successfully updated Money.');
+    })
+    .catch(err => console.log('\t- Failed to update Money'));
+}
+
+exports.delete = id => {
+  Money.findByIdAndRemove(id);
+}
