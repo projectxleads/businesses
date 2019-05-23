@@ -54,7 +54,7 @@ exports.updateMoney = (req, res, next) => {
 }
 
 exports.deleteMoney = (req, res, next) => {
-  moneyLogic.deleteMoney(req.params.id, res)
+  moneyLogic.deleteMoney(req.params.id)
     .then(deletedMoney => {
       if (!deletedMoney)
         return res.status(404).send();
