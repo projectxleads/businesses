@@ -1,9 +1,8 @@
 import express from 'express';
+import moneyRouter from '../api_routes/money/money.route';
 
 const router = express.Router();
 
-router.use('/home', (req, res) => {
-  res.send('Home');
-})
+router.use(moneyRouter);
 
-export = router;
+export default router;
