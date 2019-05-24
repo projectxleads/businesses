@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 
+// Import project files
+import router from './presentation/middleware/routes.middleware';
+
 // initialize configuration
 dotenv.config();
 
@@ -16,6 +19,8 @@ const app = express();
 app.get("/", (req, res) => {
   res.send(`Hello world`);
 });
+
+app.use('/api', router);
 
 mongoose.connect(dbConnectionString)
   .then((result) => {
