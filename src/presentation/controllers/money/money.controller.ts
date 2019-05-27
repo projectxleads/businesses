@@ -1,6 +1,18 @@
+import {AutoWired, Inject} from "typescript-ioc";
+import MoneyLogic from "../../../application/logic/money/money.logic";
+
 class MoneyController {
-  public getMonies(req: any, res: any) {
-    console.log('Get Monies');
+  moneyLogic: MoneyLogic;
+  constructor() {
+    console.log('Here');
+    this.moneyLogic = new MoneyLogic();
+  }
+  getMonies = (req: any, res: any) => {
+    console.log("Get Monies from Money Controller");
+    this.moneyLogic.getMonies().then((monies) => {
+      console.log("\t- Successfully got monies from  Money Controller");
+      res.send(monies);
+    });
   }
 
   public getMoney(req: any, res: any) {

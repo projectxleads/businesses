@@ -1,5 +1,7 @@
-interface Money {
-  id: String;
-  name: String;
-  description: String;
+interface IMoney {
+  id: string;
+  name: string;
+  description: string;
 }
+
+export = IMoney;
