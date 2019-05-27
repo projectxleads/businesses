@@ -1,5 +1,5 @@
 import express from "express";
-import MoneyController from '../../controllers/money/money.controller';
+import MoneyController from "../../controllers/money/money.controller";
 
 const moneyRouter = express.Router();
 const uri = "/money";
