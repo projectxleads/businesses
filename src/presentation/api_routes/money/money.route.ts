@@ -1,12 +1,14 @@
-import express from 'express';
+import express from "express";
+import MoneyController from '../../controllers/money/money.controller';
 
 const moneyRouter = express.Router();
-const uri = '/money';
+const uri = "/money";
+const controller = new MoneyController();
 
-moneyRouter.get(uri, (req, res) => res.send('get money'));
-moneyRouter.get(`${uri}/:id`, (req, res) => res.send('get money by id'));
-moneyRouter.post(uri, (req, res) => res.send('post money'));
-moneyRouter.put(`${uri}/:id`, (req, res) => res.send('put money'));
-moneyRouter.delete(`${uri}/:id`, (req, res) => res.send('delete money'));
+moneyRouter.get(uri, controller.getMonies);
+moneyRouter.get(`${uri}/:id`, controller.getMoney);
+moneyRouter.post(uri, controller.addMoney);
+moneyRouter.put(`${uri}/:id`, controller.updateMoney);
+moneyRouter.delete(`${uri}/:id`, controller.deleteMoney);
 
 export default moneyRouter;

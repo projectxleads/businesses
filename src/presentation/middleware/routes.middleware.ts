@@ -1,5 +1,5 @@
-import express from 'express';
-import moneyRouter from '../api_routes/money/money.route';
+import express from "express";
+import moneyRouter from "../api_routes/money/money.route";
 
 const router = express.Router();
 
